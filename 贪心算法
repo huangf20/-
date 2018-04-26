@@ -1,0 +1,42 @@
+#include<stdio.h>
+int main()
+{
+	int c[7];
+	int money[7]={1,2,5,10,20,50,100};
+	int k,i,t;
+	int d[7];
+	for(i=0;i<7;i++)
+	{
+		printf("c%d=",i);
+		scanf("%d",&c[i]);
+	}
+	printf("k=");
+	scanf("%d",&k);
+	t=k;
+
+	for(i=6;i>0;i--)
+	{
+		d[i]=t/money[i];
+		
+		
+
+		if(d[i]>c[i])
+		{
+			d[i]=c[i];
+			t=t-money[i]*c[i];
+		}
+		else t=t%money[i];
+		printf("需要%d张%d元的纸币\n",d[i],money[i]);
+	}
+	d[0]=t;
+	printf("需要%d张1元的纸币\n",d[0]);
+	
+	if(d[0]>c[0])
+		printf("1元纸币只有%d张，纸币不够\n",c[0]);
+	else printf("至少需要%d张纸币\n",d[0]+d[1]+d[2]+d[3]+d[4]+d[5]+d[6]);
+
+	
+
+
+	return 0;
+}
